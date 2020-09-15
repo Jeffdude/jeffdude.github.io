@@ -1,3 +1,0 @@
-# Jeffdude's Blog
-
-### Hi
