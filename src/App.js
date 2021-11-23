@@ -1,12 +1,21 @@
 import React from 'react';
-import logo from './atom_logo.png';
+import styled from 'styled-components';
+
+
+import AtomSvgData from './assets/atom.svg';
 import './App.css';
+
+const AtomLogo = styled.div`
+  width: 800px;
+`
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <AtomLogo>
+          <object data={AtomSvgData} aria-label="atom-logo"/>
+        </AtomLogo>
         <p>
             Hello World!
         </p>
