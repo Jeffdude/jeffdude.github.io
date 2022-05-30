@@ -8,9 +8,8 @@ import {
 
 import './App.css';
 
-import { ReactComponent as AtomLogo } from './atom.svg';
-
-import HomePage from './pages/home'
+import Header from './components/header';
+import HomePage from './pages/home';
 
 const location = new ReactLocation();
 
@@ -23,22 +22,7 @@ function App() {
       ]}
     >
       <div className="App">
-        <header className="App-header">
-          <div style={{width: "800px"}}>
-            <AtomLogo/>
-          </div>
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header/>
         <body>
           <Outlet/>
         </body>

@@ -33,10 +33,7 @@ function WindowSizeProvider({ children } : Props){
 
 export function useGetBodyHeight() {
    const [, windowHeight] = React.useContext(WindowSizeContext);
-   return {
-     md: 'calc(' + windowHeight + 'px - ' + headerHeight.md + ')',
-     xs: 'calc(' + windowHeight + 'px - ' + headerHeight.xs + ')',
-   }
+   return 'calc(' + windowHeight + 'px - ' + headerHeight + 'px)'
 }
 
 export default WindowSizeProvider;
