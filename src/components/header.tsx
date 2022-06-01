@@ -4,20 +4,25 @@ import AtomLogo from '../atom.svg';
 
 function Header(){
   return (
-    <header className="App-header">
-      <object data={AtomLogo} aria-label="logo"/>
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
+    <div className="App-header">
+      <div className="Header-title">
+        <object data={AtomLogo} aria-label="logo"/>
+        <div>
+          <h2>Jeffrey Milling</h2>
+          <p>Full Stack Developer</p>
+        </div>
+      </div>
+      <div>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </div>
+    </div>
   )
 }
 export default Header;

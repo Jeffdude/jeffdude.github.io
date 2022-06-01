@@ -21,11 +21,9 @@ function App() {
         {path: "/", element: <HomePage/>},
       ]}
     >
-      <div className="App">
+      <div className='App'>
         <Header/>
-        <body>
-          <Outlet/>
-        </body>
+        <Outlet/>
       </div>
     </Router>
   );
