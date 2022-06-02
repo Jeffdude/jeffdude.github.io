@@ -1,48 +1,120 @@
 .App {
   text-align: center;
-  font-size: calc(10px + 2vmin);
   color: white;
-  background-color: #282c34;
+  background-color: #1e1f21;
+  font-size: calc(10px + 1.5vmin);
 }
+#vline {
+  border-left: 1px solid white;
+  margin: 0 0.6em;
+}
+#hline {
+  border-top: 1px solid white;
+  margin: 0.6em 0;
+}
+#row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+#col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#leftcol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#cornerbordercontent {
+  position:relative;
+  padding: 3vmin 3vmin;
+  margin: 3vmin 3vmin;
+}
+#cornerbordercontent:before, #cornerbordercontent:after, #cornerbordercontent>:first-child:before, #cornerbordercontent>:first-child:after {
+    position:absolute;
+    width:10px; height: 10px;
+    border-color:white; /* or whatever colour */
+    border-style:solid; /* or whatever style */
+    content: ' ';
+}
+#cornerbordercontent:before {top:0;left:0;border-width: 1px 0 0 1px}
+#cornerbordercontent:after {top:0;right:0;border-width: 1px 1px 0 0}
+#cornerbordercontent>:first-child:before {bottom:0;right:0;border-width: 0 1px 1px 0}
+#cornerbordercontent>:first-child:after {bottom:0;left:0;border-width: 0 0 1px 1px}
 
 .App-header {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.App-inner-header {
+  max-width: min(1500px, 95vw);
+  min-width: min(1500px, 95vw);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #1c1e23;
 }
-.App-header > div {
-}
-.App-header > div:last-child {
+.App-inner-header > div:last-child {
   flex-grow: 1;
 }
-.App-header > div:first-child {
+.App-inner-header > div:first-child {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   flex-grow: 2;
-  padding: 4vw 4vw;
   pointer-events: none;
 }
 .Header-title > object {
-  min-height: 100px;
-  max-height: 160px;
+  height: 24vmin;
+  padding: 3vmin 3vmin 0;
 }
 .Header-title > div {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  padding-left: 3vw;
+  justify-content: flex-end;
+  padding-bottom: 0.5em;
 }
 .Header-title > div > h2 {
-  font-size: calc(35px + 2vmin);
-  font-stretch:expanded;
+  margin-bottom: 0.25em;
+}
+.Header-icons {
+  color: white;
+  fill: white;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.Header-icons > div {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.Header-icons > div > a {
+  color: white;
+  padding: 1vmin;
+  size: 2em;
+}
+.Header-icons > div > a:hover {
+  color: #aeaeae;
 }
 
 .App-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
 }
-
-.App-link {
-  color: #61dafb;
+.App-page > * {
+  max-width: min(900px, 95vw);
 }
