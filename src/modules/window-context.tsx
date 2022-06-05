@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { headerHeight } from '../constants';
+import { topToolbarHeight } from '../constants';
 
-type WindowSize = [Number, Number] 
+type WindowSize = [number, number] 
 
 function useWindowSize(): WindowSize {
   const [size, setSize] = React.useState<WindowSize>([0, 0]);
@@ -33,7 +33,7 @@ function WindowSizeProvider({ children } : Props){
 
 export function useGetBodyHeight() {
    const [, windowHeight] = React.useContext(WindowSizeContext);
-   return 'calc(' + windowHeight + 'px - ' + headerHeight + 'px)'
+   return 'calc(' + windowHeight + 'px - ' + topToolbarHeight + 'px)'
 }
 
 export default WindowSizeProvider;

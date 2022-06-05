@@ -9,7 +9,9 @@ import {
 import './App.css';
 
 import Header from './components/header';
-import HomePage from './pages/home';
+import TabBar from './components/tabbar';
+
+import { pages } from './constants';
 
 const location = new ReactLocation();
 
@@ -17,12 +19,11 @@ function App() {
   return (
     <Router
       location={location}
-      routes={[
-        {path: "/", element: <HomePage/>},
-      ]}
+      routes={pages.map(({path, element}) => ({path, element}))}
     >
       <div className='App'>
         <Header/>
+        <TabBar/>
         <Outlet/>
       </div>
     </Router>

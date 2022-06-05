@@ -3,49 +3,8 @@
   color: white;
   background-color: #1e1f21;
   font-size: calc(10px + 1.5vmin);
+  overflow: hidden;
 }
-#vline {
-  border-left: 1px solid white;
-  margin: 0 0.6em;
-}
-#hline {
-  border-top: 1px solid white;
-  margin: 0.6em 0;
-}
-#row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-#col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-#leftcol {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-#cornerbordercontent {
-  position:relative;
-  padding: 3vmin 3vmin;
-  margin: 3vmin 3vmin;
-}
-#cornerbordercontent:before, #cornerbordercontent:after, #cornerbordercontent>:first-child:before, #cornerbordercontent>:first-child:after {
-    position:absolute;
-    width:10px; height: 10px;
-    border-color:white; /* or whatever colour */
-    border-style:solid; /* or whatever style */
-    content: ' ';
-}
-#cornerbordercontent:before {top:0;left:0;border-width: 1px 0 0 1px}
-#cornerbordercontent:after {top:0;right:0;border-width: 1px 1px 0 0}
-#cornerbordercontent>:first-child:before {bottom:0;right:0;border-width: 0 1px 1px 0}
-#cornerbordercontent>:first-child:after {bottom:0;left:0;border-width: 0 0 1px 1px}
-
 .App-header {
   width: 100vw;
   display: flex;
@@ -107,6 +66,49 @@
 }
 .Header-icons > div > a:hover {
   color: #aeaeae;
+  transition: 0.3s;
+}
+
+.tabbar-container {
+  width: 120%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: stretch;
+  transform: translate(-10%, 0);
+  margin: 10px;
+}
+.tabbar-margin {
+  flex-grow: 1;
+  height: 100%;
+  transform: scale(1.01, 1) skew(20deg);
+}
+.tabbar-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(33vmin, 200px);
+  transform: skew(20deg);
+}
+.tabbar-tab.selected {
+  background-color: white;
+}
+.tabbar-tab.unselected { 
+  background-color: #1e1f21;
+}
+
+.tabbar-tab-text {
+  font-size: calc(10px + 1.5vmin);
+  transform: skew(-20deg);
+}
+.tabbar-tab-text.unselected{
+  color: white;
+  background-color: #1e1f21;
+}
+.tabbar-tab-text.selected{
+  color: #1e1f21;
+  background-color: white;
 }
 
 .App-page {

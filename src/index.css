@@ -37,3 +37,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+  all: unset;
+  cursor: pointer; 
+}
+
+#vline {
+  border-left: 1px solid white;
+  margin: 0 0.6em;
+}
+#hline {
+  border-top: 1px solid white;
+  margin: 0.6em 0;
+}
+#row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+#col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#leftcol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#cornerbordercontent {
+  position:relative;
+  padding: 3vmin 3vmin;
+  margin: 3vmin 3vmin;
+}
+#cornerbordercontent:before, #cornerbordercontent:after, #cornerbordercontent>:first-child:before, #cornerbordercontent>:first-child:after {
+    position:absolute;
+    width:10px; height: 10px;
+    border-color:white; /* or whatever colour */
+    border-style:solid; /* or whatever style */
+    content: ' ';
+}
+#cornerbordercontent:before {top:0;left:0;border-width: 1px 0 0 1px}
+#cornerbordercontent:after {top:0;right:0;border-width: 1px 1px 0 0}
+#cornerbordercontent>:first-child:before {bottom:0;right:0;border-width: 0 1px 1px 0}
+#cornerbordercontent>:first-child:after {bottom:0;left:0;border-width: 0 0 1px 1px}
