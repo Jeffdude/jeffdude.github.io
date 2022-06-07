@@ -29,11 +29,13 @@ function TabBar() {
   const tabPages : Page[] = pages.filter(({intabbar}) => intabbar)
   return <div className="tabbar-container">
     <div className="tabbar-margin left"/>
-    {
-      tabPages.map(({title, path}, index) => (
-        <Tab key={index} {...{title, path, index}}/>
-      ))
-    }
+    <div className="tabbar-tab-container">
+      {
+        tabPages.map(({title, path}, index) => (
+          <Tab key={index} {...{title, path, index}}/>
+        ))
+      }
+    </div>
     <div className="tabbar-margin right"/>
   </div>
 }

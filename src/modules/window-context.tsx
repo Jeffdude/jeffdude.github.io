@@ -2,13 +2,23 @@ import React from 'react';
 
 import { topToolbarHeight } from '../constants';
 
-type WindowSize = [number, number] 
+type WindowSize = {
+  innerWidth: number,
+  innerHeight: number,
+  scrollbarWidth: number,
+} 
+
+const DEFAULT_WINDOW_SIZE = {innerWidth: 0, innerHeight: 0, scrollbarWidth: 0};
 
 function useWindowSize(): WindowSize {
-  const [size, setSize] = React.useState<WindowSize>([0, 0]);
+  const [size, setSize] = React.useState<WindowSize>(DEFAULT_WINDOW_SIZE);
   React.useLayoutEffect(() => {
     function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
+      setSize({
+        innerWidth: window.innerWidth, 
+        innerHeight: window.innerHeight,
+        scrollbarWidth: window.innerWidth - document.body.clientWidth,
+      });
     }
     window.addEventListener('resize', updateSize);
     updateSize();
@@ -17,7 +27,7 @@ function useWindowSize(): WindowSize {
   return size;
 }
 
-const WindowSizeContext = React.createContext<WindowSize>([0, 0]);
+const WindowSizeContext = React.createContext<WindowSize>(DEFAULT_WINDOW_SIZE);
 WindowSizeContext.displayName = "WindowSizeContext";
 
 type Props = {
@@ -32,8 +42,13 @@ function WindowSizeProvider({ children } : Props){
 }
 
 export function useGetBodyHeight() {
-   const [, windowHeight] = React.useContext(WindowSizeContext);
-   return 'calc(' + windowHeight + 'px - ' + topToolbarHeight + 'px)'
+   const { innerHeight } = React.useContext(WindowSizeContext);
+   return 'calc(' + innerHeight + 'px - ' + topToolbarHeight + 'px)'
+}
+
+export function useGetViewPortWidth() {
+  const { scrollbarWidth } = React.useContext(WindowSizeContext);
+  return 'calc( 100vw - ' + scrollbarWidth + 'px)';
 }
 
 export default WindowSizeProvider;

@@ -4,6 +4,13 @@
   background-color: #1e1f21;
   font-size: calc(10px + 1.5vmin);
   overflow: hidden;
+  max-width: 100vw;
+  min-height: 100vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.App::-webkit-scrollbar{
+  display: none;
 }
 .App-header {
   width: 100vw;
@@ -70,45 +77,59 @@
 }
 
 .tabbar-container {
-  width: 120%;
   height: 40px;
   display: flex;
   flex-direction: row;
-  justify-content: stretch;
+  justify-content: center;
   align-items: stretch;
-  transform: translate(-10%, 0);
-  margin: 10px;
+  margin: 0 0 1vmin;
+}
+
+.tabbar-tab-container {
+  max-width: min(1500px, 95vw);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .tabbar-margin {
+  display:none;
   flex-grow: 1;
-  height: 100%;
-  transform: scale(1.01, 1) skew(20deg);
+  height: 2px;
+  align-self: center;
+  background-color: white;
+  transform: skew(20deg);
+}
+.tabbar-margin.left {
+  margin-right: 3vmin;
+}
+.tabbar-margin.right {
+  margin-left: 3vmin;
 }
 .tabbar-tab {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: min(33vmin, 200px);
+  flex-wrap: nowrap;
   transform: skew(20deg);
 }
 .tabbar-tab.selected {
   background-color: white;
 }
 .tabbar-tab.unselected { 
-  background-color: #1e1f21;
+  background-color: unset;
 }
 
 .tabbar-tab-text {
-  font-size: calc(10px + 1.5vmin);
+  font-size: calc(12px + 1.5vmin);
+  margin: 0 4vmin;
   transform: skew(-20deg);
 }
 .tabbar-tab-text.unselected{
   color: white;
-  background-color: #1e1f21;
 }
 .tabbar-tab-text.selected{
   color: #1e1f21;
-  background-color: white;
 }
 
 .App-page {
@@ -116,7 +137,47 @@
   flex-direction: column;
   align-items: center;
   text-align: left;
+  padding-top: 50px;
 }
 .App-page > * {
-  max-width: min(900px, 95vw);
+  max-width: min(1500px, 95vw);
+}
+
+div.bio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+}
+div.selfie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  margin: 4vmin 4vmin 0 0;
+}
+@media only screen and (max-width: 1500px) {
+  div.selfie {
+    display: none;
+  }
+}
+img.selfie {
+  max-width: min(70vw, 400px);
+  border: 5px solid white;
+  transform: rotate(-15deg);
+  margin: 15px 15px 50px;
+}
+p.caption {
+  font-size: calc(5px + 0.8vmin);
+}
+p.summary {
+  margin: 0.5em 0 0 1.5em;
+  min-width: 25vw;
+  max-width: 900px;
+}
+
+.projects-list {
+  margin-top: 4vmin;
 }

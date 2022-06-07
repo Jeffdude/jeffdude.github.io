@@ -4,8 +4,14 @@ import Page from '../components/page';
 
 function HomePage(){
   return <Page>
-    <div id="leftcol">
-      <p style={{margin: "0.5em 0 0 1.5em"}}>
+    <div className="bio">
+      <div className="selfie">
+        <img src="/bio-selfie.jpeg" className='selfie' alt="Jeff Milling selfie"/>
+        <p className="caption">
+          A selfie from middle-of-nowhere Idaho during a cross-country road trip circa 2020
+        </p>
+      </div>
+      <p className="summary">
         I am a highly driven goal-oriented software engineer with a variety of
         technical experience aquired through self-teaching, industry experience,
         and formal education.  After over five years experience in dynamic
@@ -20,6 +26,11 @@ function HomePage(){
         learning journey and implement exciting and useful projects for other
         businesses I am passionate about.
       </p>
+    </div>
+    <div className="projects-list">
+      <div className="projects-list-item">
+        test
+      </div>
     </div>
   </Page>
 }
