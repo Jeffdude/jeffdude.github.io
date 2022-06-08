@@ -9,9 +9,6 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.App::-webkit-scrollbar{
-  display: none;
-}
 .App-header {
   width: 100vw;
   display: flex;
@@ -180,4 +177,12 @@ p.summary {
 
 .projects-list {
   margin-top: 4vmin;
+}
+.github-link {
+  color: white;
+}
+.project-header {
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }

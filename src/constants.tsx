@@ -6,6 +6,8 @@ import ContactPage from './pages/contact';
 import ProjectPage from './pages/project';
 import FourOhFourPage from './pages/404';
 
+import StocktrackerV1Page from './pages/projects/stocktracker-v1';
+
 export const topToolbarHeight: number = 200;
 
 export interface Page {
@@ -76,7 +78,7 @@ export const projects: Project[] = [
     projectId: "stocktracker-v1",
     shortDescription: "My first website.",
     techStack: [Tech.Javascript, Tech.React, Tech.Python, Tech.MySQL],
-    page: () => <></>,
+    page: () => <StocktrackerV1Page/>,
   },
   {
     title: "Stock Tracker v2",
