@@ -1,0 +1,97 @@
+import React, { useReducer } from 'react';
+
+import { TiDelete } from 'react-icons/ti';
+
+import { Tech, Project, projects } from '../constants';
+import GithubLink from './github-link';
+
+enum Action { push, pop }
+type ReducerProps = {type: Tech, action: Action}; 
+
+type TagProps = {
+  type: Tech,
+  selectedTech: Tech[], 
+  dispatch: ({type, action}: ReducerProps) => void,
+}
+
+const TechTag: React.FC<TagProps> = ({type, selectedTech, dispatch}: TagProps): JSX.Element => {
+  enum selectedState {
+    selected = "selected", 
+    unselected = "unselected",
+    default = "default",
+  }
+  const currentState: selectedState = ((): selectedState => {
+    if(selectedTech.length) {
+      return selectedTech.includes(type) ? selectedState.selected : selectedState.unselected
+    }
+    return selectedState.default
+  })()
+
+  const popSelf = () => dispatch({type, action: Action.pop})
+  const pushSelf = () => dispatch({type, action: Action.push})
+
+  return <button
+    className={"tech-tag " + currentState}
+    style={{backgroundColor: type.color}}
+    onClick={currentState === selectedState.selected ? popSelf : pushSelf}
+  >
+    {type.key}
+    {currentState === selectedState.selected && <TiDelete/>}
+  </button>
+}
+
+type ItemProps = {
+  project: Project;
+  selectedTech: Tech[],
+  dispatch: ({type, action}: ReducerProps) => void,
+}
+
+const ProjectItem: React.FC<ItemProps> = ({project, selectedTech, dispatch}: ItemProps): JSX.Element => {
+  const { title, shortDescription, techStack, links}: Project = project;
+  return <div className="projects-list-item">
+    <div>
+      <div className='title-row'>
+        <div className='title'>{title}</div>
+        {links?.map((link, key)=>
+          <GithubLink key={key} {...link}/>
+        )}
+      </div>
+      <div id="hline" style={{width: "50%", margin: "2px 0px 10px"}}/>
+      <p className='description'>{shortDescription}</p>
+    </div>
+    <div className='tech-tag-list'>
+      {techStack.map((type: Tech, key) => <TechTag {...{type, selectedTech, dispatch, key}}/>)}
+    </div>
+  </div>
+}
+
+const ProjectList: React.FC<{}> = (): JSX.Element => {
+  const [selectedTech, dispatch]: [Tech[], ({type, action}: ReducerProps) => void] = useReducer(
+    (state: Tech[], {type, action}: ReducerProps): Tech[] => {
+      if(action === Action.push && !state.includes(type)) {
+        return [type, ...state];
+      } else if (action === Action.pop) {
+        const newState = [...state.filter(t => t.key !== type.key)];
+        return newState;
+      }
+      return state;
+    },
+    [],
+  );
+
+  const selectedProjects: Project[] = 
+    selectedTech.length 
+      ? projects.filter(({techStack}: Project) => {
+          const foundTech: number[] = selectedTech.map((t: Tech) => techStack.indexOf(t))
+          return foundTech.every(index => index > -1)
+        })
+      : projects;
+
+  return <div className="projects-list-container">
+    <div className="projects-list">
+      {selectedProjects.map((project, key) => <ProjectItem {...{project, selectedTech, dispatch, key}}/>)}
+    </div>
+  </div>
+}
+
+export default ProjectList;

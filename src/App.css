@@ -175,8 +175,83 @@ p.summary {
   max-width: 900px;
 }
 
+.section-title-container {
+  margin: 4vmin 0 0 4vmin;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.section-title {
+  padding: 1.5vmin !important;
+}
+
+.projects-list-container {
+  width: 100%;
+}
 .projects-list {
-  margin-top: 4vmin;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin: 0 0 4vmin;
+  flex-wrap: wrap;
+}
+.projects-list::-webkit-scrollbar {
+  display: none;
+}
+.projects-list-item > div {
+  width: 100%;
+}
+.projects-list-item .title-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  display: flex;
+  width: 100%;
+}
+.projects-list-item {
+  margin: 20px 0 0 20px;
+  width: 350px;
+  background-color: #313640;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: -4px 2px 5px rgba(0,0,0, 0.4);
+  padding: 1vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.projects-list-item .title {
+  font-family: 'Rubrik', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: calc(5px + 2vmin);
+  flex-wrap: nowrap;
+  flex-grow: 1;
+}
+.projects-list .description {
+  font-size: calc(5px + 1.2vmin);
+}
+.projects-list-item .tech-tag-list {
+  display: flex;
+  align-self: flex-end;
+  width: 100%;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+.tech-tag {
+  border-radius: 10px;
+  padding: 2px 10px;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: calc(5px + 1.1vmin);
 }
 .github-link {
   color: white;

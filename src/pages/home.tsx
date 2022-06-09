@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Page from '../components/page';
+import ProjectList from '../components/project-list';
+import SectionTitle from '../components/section-title';
 
 function HomePage(){
   return <Page>
@@ -27,11 +29,8 @@ function HomePage(){
         businesses I am passionate about.
       </p>
     </div>
-    <div className="projects-list">
-      <div className="projects-list-item">
-        test
-      </div>
-    </div>
+    <SectionTitle>My Projects</SectionTitle>
+    <ProjectList/>
   </Page>
 }
 export default HomePage;
