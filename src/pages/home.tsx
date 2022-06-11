@@ -29,7 +29,6 @@ function HomePage(){
         businesses I am passionate about.
       </p>
     </div>
-    <SectionTitle>My Projects</SectionTitle>
     <ProjectList/>
   </Page>
 }

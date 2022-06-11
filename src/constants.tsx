@@ -49,36 +49,33 @@ export const pages: Page[] = [
   },
 ]
 
-export class Tech {
-  static readonly JS = new Tech("Javascript", "rgba(255,0,0,1)");
-  static readonly React = new Tech("React", "rgba(255,0,0,1)");
-  static readonly Node = new Tech("Node", "rgba(255,0,0,1)");
-  static readonly RN = new Tech("React Native", "rgba(255,0,0,1)");
-  static readonly Python = new Tech("Python", "rgba(255,0,0,1)");
-  static readonly MongoDB = new Tech("MongoDB", "rgba(255,0,0,1)");
-  static readonly MySQL = new Tech("MySQL", "rgba(255,0,0,1)");
-  static readonly TS = new Tech("Typescript", "rgba(255,0,0,1)");
-  static readonly Liquid = new Tech("Liquid", "rgba(255,0,0,1)");
-  static readonly Shopify = new Tech("Shopify", "rgba(255,0,0,1)");
-  static readonly Wix = new Tech("Wix", "rgba(255,0,0,1)");
-  static readonly GraphQL = new Tech("GraphQL", "rgba(255,0,0,1)");
-
-  private constructor(public readonly key: string, public readonly color: string){}
+export enum Tech {
+  Javascript,
+  React,
+  Node,
+  "React Native",
+  Python,
+  MongoDB,
+  MySQL,
+  Typescript,
+  Liquid,
+  Shopify,
+  Wix,
+  GraphQL,
 }
-
 export const AllTech: Tech[] = [
+  Tech.Javascript,
+  Tech.Typescript,
+  Tech.React,
   Tech.GraphQL,
   Tech.Wix,
   Tech.Shopify,
-  Tech.Liquid,
-  Tech.TS,
   Tech.MySQL,
   Tech.MongoDB,
   Tech.Python,
-  Tech.RN,
+  Tech.Liquid,
+  Tech["React Native"],
   Tech.Node,
-  Tech.React,
-  Tech.JS,
 ]
 
 export interface Project {
@@ -95,7 +92,7 @@ export const projects: Project[] = [
     title: "Stock Tracker v1",
     projectId: "stocktracker-v1",
     shortDescription: "My first website.",
-    techStack: [Tech.JS, Tech.React, Tech.Python, Tech.MySQL],
+    techStack: [Tech.Javascript, Tech.React, Tech.Python, Tech.MySQL],
     links: [
       {tooltip: 'Frontend', link: "https://github.com/JMKRIDE-USA/StockTracker-frontend/tree/a9088a6f031c12227d0fef06df858c333093455a"},
       {tooltip: 'Backend', link: "https://github.com/JMKRIDE-USA/StockTracker-backend"},
@@ -106,14 +103,14 @@ export const projects: Project[] = [
     title: "Stock Tracker v2",
     projectId: "stocktracker-v2",
     shortDescription: "Full featured inventory management website.",
-    techStack: [Tech.JS, Tech.React, Tech.Node, Tech.MongoDB],
+    techStack: [Tech.Javascript, Tech.React, Tech.Node, Tech.MongoDB],
     page: () => <></>,
   },
   {
     title: "Ambassador Portal",
     projectId: "ambassador-portal",
     shortDescription: "First attempt at an authenticated frontend & backend.",
-    techStack: [Tech.JS, Tech.RN, Tech.Node, Tech.MongoDB],
+    techStack: [Tech.Javascript, Tech["React Native"], Tech.Node, Tech.MongoDB],
     page: () => <></>,
   },
   {
@@ -127,21 +124,28 @@ export const projects: Project[] = [
     title: "This Website",
     projectId: "personal-website",
     shortDescription: "This simple professional personal website",
-    techStack: [Tech.JS, Tech.TS],
+    techStack: [Tech.Javascript, Tech.Typescript],
     page: () => <></>,
   },
   {
     title: "JMKRIDE websites",
     projectId: "jmkride-websites",
     shortDescription: "The international and USA shop websites.",
-    techStack: [Tech.JS, Tech.Wix, Tech.Liquid, Tech.Shopify],
+    techStack: [Tech.Javascript, Tech.Wix, Tech.Liquid, Tech.Shopify],
     page: () => <></>,
   },
   {
     title: "Ambassador Shopify App",
     projectId: "ambassador-shopify-app",
     shortDescription: "The interface between USA sales and our ambassador balances",
-    techStack: [Tech.JS, Tech.Shopify, Tech.GraphQL],
+    techStack: [Tech.Javascript, Tech.Shopify, Tech.GraphQL],
     page: () => <></>,
-  }
+  },
+  {
+    title: "Freeskater Finder",
+    projectId: "freeskater-finder",
+    shortDescription: "Customer-facing social map website for connecting people all around the world",
+    techStack: [Tech.React, Tech.Javascript, Tech.MongoDB, Tech.Node],
+    page: () => <></>,
+  },
 ]

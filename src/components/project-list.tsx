@@ -1,8 +1,11 @@
 import React, { useReducer } from 'react';
 
+import { IoFilter } from 'react-icons/io5';
 import { TiDelete } from 'react-icons/ti';
 
-import { Tech, Project, projects } from '../constants';
+
+import SectionTitle from './section-title';
+import { Tech, Project, projects, AllTech } from '../constants';
 import GithubLink from './github-link';
 
 enum Action { push, pop }
@@ -31,12 +34,11 @@ const TechTag: React.FC<TagProps> = ({type, selectedTech, dispatch}: TagProps): 
   const pushSelf = () => dispatch({type, action: Action.push})
 
   return <button
-    className={"tech-tag " + currentState}
-    style={{backgroundColor: type.color}}
+    className={"tech-tag " + currentState + " " + Tech[type]}
     onClick={currentState === selectedState.selected ? popSelf : pushSelf}
   >
-    {type.key}
-    {currentState === selectedState.selected && <TiDelete/>}
+    {Tech[type]}
+    {false && currentState === selectedState.selected && <TiDelete/>}
   </button>
 }
 
@@ -71,7 +73,7 @@ const ProjectList: React.FC<{}> = (): JSX.Element => {
       if(action === Action.push && !state.includes(type)) {
         return [type, ...state];
       } else if (action === Action.pop) {
-        const newState = [...state.filter(t => t.key !== type.key)];
+        const newState = [...state.filter(t => t !== type)];
         return newState;
       }
       return state;
@@ -88,6 +90,14 @@ const ProjectList: React.FC<{}> = (): JSX.Element => {
       : projects;
 
   return <div className="projects-list-container">
+    <SectionTitle>My Projects</SectionTitle>
+    <div className="projects-list-filters">
+      <IoFilter size={"1.5em"}/>
+      <p>Filter:</p>
+      <div>
+        {AllTech.map((type, key) => <TechTag {...{type, key, selectedTech, dispatch}}/>)}
+      </div>
+    </div>
     <div className="projects-list">
       {selectedProjects.map((project, key) => <ProjectItem {...{project, selectedTech, dispatch, key}}/>)}
     </div>
