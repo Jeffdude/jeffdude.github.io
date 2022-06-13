@@ -10,6 +10,10 @@ p {
   margin: 0;
 }
 
+a:-webkit-any-link {
+  color: unset;
+}
+
 h1, h2 {
   font-family: 'Rubik', sans-serif;
   font-size: calc(25px + 2vmin);

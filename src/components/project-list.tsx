@@ -2,11 +2,14 @@ import React, { useReducer } from 'react';
 
 import { IoFilter } from 'react-icons/io5';
 import { TiDelete } from 'react-icons/ti';
-
+import { FaGhost } from 'react-icons/fa';
+import { BiLink } from 'react-icons/bi';
+import { Link } from '@tanstack/react-location';
 
 import SectionTitle from './section-title';
 import { Tech, Project, projects, AllTech } from '../constants';
 import GithubLink from './github-link';
+
 
 enum Action { push, pop }
 type ReducerProps = {type: Tech, action: Action}; 
@@ -49,11 +52,14 @@ type ItemProps = {
 }
 
 const ProjectItem: React.FC<ItemProps> = ({project, selectedTech, dispatch}: ItemProps): JSX.Element => {
-  const { title, shortDescription, techStack, links}: Project = project;
+  const { title, shortDescription, techStack, links, projectId}: Project = project;
   return <div className="projects-list-item">
     <div>
       <div className='title-row'>
-        <div className='title'>{title}</div>
+        <Link className='title' to={"project/" + projectId}>
+          <BiLink/>
+          {title}
+        </Link>
         {links?.map((link, key)=>
           <GithubLink key={key} {...link}/>
         )}
@@ -92,7 +98,7 @@ const ProjectList: React.FC<{}> = (): JSX.Element => {
   return <div className="projects-list-container">
     <SectionTitle>My Projects</SectionTitle>
     <div className="projects-list-filters">
-      <IoFilter size={"1.5em"}/>
+      <IoFilter size={30}/>
       <p>Filter:</p>
       <div>
         {AllTech.map((type, key) => <TechTag {...{type, key, selectedTech, dispatch}}/>)}
@@ -101,6 +107,10 @@ const ProjectList: React.FC<{}> = (): JSX.Element => {
     <div className="projects-list">
       {selectedProjects.map((project, key) => <ProjectItem {...{project, selectedTech, dispatch, key}}/>)}
     </div>
+    {selectedProjects.length === 0 && <div className="empty-projects-list">
+        <FaGhost/>
+        <p>No projects found with those filters.</p>
+    </div>}
   </div>
 }
 

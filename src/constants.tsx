@@ -124,7 +124,7 @@ export const projects: Project[] = [
     title: "This Website",
     projectId: "personal-website",
     shortDescription: "This simple professional personal website",
-    techStack: [Tech.Javascript, Tech.Typescript],
+    techStack: [Tech.Javascript, Tech.Typescript, Tech.React],
     page: () => <></>,
   },
   {
