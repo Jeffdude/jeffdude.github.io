@@ -96,7 +96,7 @@ const ProjectList: React.FC<{}> = (): JSX.Element => {
       : projects;
 
   return <div className="projects-list-container">
-    <SectionTitle>My Projects</SectionTitle>
+    <SectionTitle id="projects">My Projects</SectionTitle>
     <div className="projects-list-filters">
       <IoFilter size={30}/>
       <p>Filter:</p>

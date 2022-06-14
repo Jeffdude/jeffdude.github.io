@@ -1,16 +1,17 @@
 import React from 'react';
 
-import ContactMeFooter from './contact-me-footer'
+import Footer from './footer'
 
 type Props = {
   children: React.ReactNode;
+  noFooterDivider?: boolean;
 }
 
-function Page({ children }: Props){
+function Page({ children, noFooterDivider = false }: Props){
   return (
     <div className='App-page'>
       {children}
-      <ContactMeFooter/>
+      <Footer noDivider={noFooterDivider}/>
     </div>
   )
 }

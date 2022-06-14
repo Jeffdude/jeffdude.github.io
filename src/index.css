@@ -37,14 +37,31 @@ h3, h4 {
   margin: 0;
 }
 
+textarea, input {
+  all: unset;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-button {
+button, .button {
   all: unset;
   cursor: pointer; 
+  padding: 1.5vmin 2vmin;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-radius: 15px;
+  background-color: #313640;
+  text-decoration: none;
+  font-family: 'Rubik', sans-serif;
+  font-size: calc(15px + 0.6vmin);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0;
 }
 
 #vline {

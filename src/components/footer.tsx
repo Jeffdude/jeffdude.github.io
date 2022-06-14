@@ -4,7 +4,11 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import ReCAPTCHA from "react-google-recaptcha";
 
-const ContactMeFooter: React.FC<{}> = (): JSX.Element => {
+type Props = {
+  noDivider?: boolean;
+}
+
+const Footer: React.FC<Props> = ({noDivider}: Props): JSX.Element => {
   /*
   const [captcha, setCaptcha]: [boolean, (r: boolean) => void] = useState(false);
   const [email, setEmail]: [string, (s: string) => void] = useState('');
@@ -22,30 +26,43 @@ const ContactMeFooter: React.FC<{}> = (): JSX.Element => {
   const onSubmit: SubmitHandler<FormValues> = ({email, message, captcha}: FormValues): void => {
     console.log({email, message, captcha})
   }
+  console.log({errors})
 
-  return <div className="contact-me-footer-container">
-    <div id="hline" style={{width: "50%"}}/>
+  return <div className="footer-container">
+    {!noDivider 
+      ? <div id="hline" style={{width: "80%"}}/>
+      : <div/>
+    }
     <div className="footer-content">
-      <h4>Contact Me:</h4>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <h4>Contact Me:</h4>
+        <p>Blurb</p>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="footer-form">
         <input 
           placeholder="Email"
-          className={"footer-input " + errors.email ? "error" : ""} 
+          className={"footer-input " + (errors?.email ? "error" : "")} 
           {...register("email", {
             required: 'This field is required.',
             pattern: {value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, message: 'Invalid email.'},
-          })}/>
+          })}
+        />
         {errors.email && <p className="form-error">{errors?.email?.message}</p>}
-        <input {...register("message", {required: 'This field is required.'})} placeholder="Message"/>
+        <textarea 
+          className={"footer-input message " + (errors?.message ? "error" : "")} 
+          placeholder="Message"
+          {...register("message", {required: 'This field is required.'})}
+        />
         {errors.message && <p className="form-error">{errors?.message?.message}</p>}
         <ReCAPTCHA
           sitekey="6LctD2ogAAAAAMoXtzQK7uV2_2Yee0xOBDN-6wbp"
           onChange={(value: any): void => setValue('captcha', !!value)}
+          theme="dark"
         />
-        <input type="submit"/>
+        <button type="submit">Submit</button>
       </form>
     </div>
   </div>
 }
 
-export default ContactMeFooter;
+export default Footer;
