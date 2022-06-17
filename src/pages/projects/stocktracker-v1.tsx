@@ -21,8 +21,10 @@ function StocktrackerV1Page(){
         very quickly, but also eliminated the issue of authenticating my coworkers
         vs. anyone else on the internet.
       `}
-      scope={['2 weeks development', '1 week deployment']}
-      operatingCosts={['~$0 (self-hosted)']}
+      scope={{
+        developmentTime: ['2 weeks development', '1 week deployment'],
+        operatingCosts: ['~$0 (self-hosted)'],
+      }}
     >
       <SectionTitle noBorder>Backend:</SectionTitle>
       <p>

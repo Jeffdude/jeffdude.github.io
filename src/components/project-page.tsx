@@ -61,7 +61,7 @@ const ProjectPage: React.FC<PageProps> = ({
       <p>{summary}</p>
       {scope && <ProjectScope scope={ scope }/>}
       {children}
-      <Link to="/#projects" className="button back-to-home-link">Back to all projects</Link>
+      <Link to="/" hash="projects" className="button back-to-home-link">Back to all projects</Link>
     </Page>
   )
 }

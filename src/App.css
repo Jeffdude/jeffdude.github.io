@@ -112,6 +112,9 @@
   justify-content: center;
   flex-wrap: nowrap;
   transform: skew(20deg);
+  padding: unset;
+  margin: unset;
+  border-radius: unset;
 }
 .tabbar-tab.selected {
   background-color: white;

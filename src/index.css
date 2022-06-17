@@ -46,8 +46,11 @@ code {
     monospace;
 }
 
-button, .button {
+button {
   all: unset;
+}
+
+button:not(.tabbar-tab, .tech-tag), .button {
   cursor: pointer; 
   padding: 1.5vmin 2vmin;
   font-weight: 500;
