@@ -25,7 +25,7 @@ function App() {
       routes={pages.map(({path, element}) => ({path, element}))}
     >
       <ScrollRestorer/>
-      <div className='App' id='App'>
+      <div className='App'>
         <Header/>
         <TabBar/>
         <Outlet/>
