@@ -13,17 +13,19 @@ import TabBar from './components/tabbar';
 
 import { pages } from './constants';
 import ScrollRestorer from './components/scroll-restorer';
+import { useGetHistory } from './modules/history-context';
 
-const location = new ReactLocation();
 
 function App() {
+  const history = useGetHistory();
+  const location = new ReactLocation({history});
   return (
     <Router
       location={location}
       routes={pages.map(({path, element}) => ({path, element}))}
     >
       <ScrollRestorer/>
-      <div className='App'>
+      <div className='App' id='App'>
         <Header/>
         <TabBar/>
         <Outlet/>

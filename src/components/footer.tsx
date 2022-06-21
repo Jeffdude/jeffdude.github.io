@@ -26,7 +26,6 @@ const Footer: React.FC<Props> = ({noDivider}: Props): JSX.Element => {
   const onSubmit: SubmitHandler<FormValues> = ({email, message, captcha}: FormValues): void => {
     console.log({email, message, captcha})
   }
-  console.log({errors})
 
   return <div className="footer-container">
     {!noDivider 

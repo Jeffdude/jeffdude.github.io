@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import WindowSizeProvider from './modules/window-context';
+import HistoryProvider from './modules/history-context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <WindowSizeProvider>
-      <App/>
+      <HistoryProvider>
+        <App/>
+      </HistoryProvider>
     </WindowSizeProvider>
   </React.StrictMode>
 );

@@ -1,35 +1,36 @@
-import React, { useEffect, useReducer, useRef } from 'react';
-import { useMatch, useResolvePath } from '@tanstack/react-location';
+import React, { useLayoutEffect, useReducer } from 'react';
+
+import { useGetHistory } from '../modules/history-context';
 
 type ScrollRestorerProps = {
   disabled?: boolean;
 }
-
 type ScrollLocation = {
-  path: string,
+  pathname: string,
   location: [x: number, y: number],
 }
-
 type ScrollRestorerState = {
   currentPathname: string,
   scrollLocations: ScrollLocation[],
 }
 
-
 const ScrollRestorer: React.FC<ScrollRestorerProps> = ({disabled = false}: ScrollRestorerProps = {}): JSX.Element => {
-  const scrollReducer = (state: ScrollRestorerState, pathname: string): ScrollRestorerState => {
+  const scrollReducer = (state: ScrollRestorerState, {pathname, location}: ScrollLocation): ScrollRestorerState => {
     if(pathname === state.currentPathname) return state;
     const previousLocation: ScrollLocation = {
-      path: state.currentPathname,
-      location: [window.scrollX, window.scrollY],
+      pathname: state.currentPathname,
+      location,
     }
     const foundIndex: number = state.scrollLocations.findIndex(
-      (searchLocation: ScrollLocation) => searchLocation.path === pathname
+      (searchLocation: ScrollLocation) => searchLocation.pathname === state.currentPathname
     )
     if(foundIndex > -1){
       return {
         currentPathname: pathname,
-        scrollLocations: state.scrollLocations.filter(({path}) => path !== pathname),
+        scrollLocations: [
+          previousLocation,
+          ...state.scrollLocations.splice(foundIndex, 1)
+        ],
       }
     }
     return {
@@ -38,31 +39,35 @@ const ScrollRestorer: React.FC<ScrollRestorerProps> = ({disabled = false}: Scrol
     }
   }
 
-  const [scrollState, dispatch]: [ScrollRestorerState, (pathname: string) => void] = useReducer(
+  const [scrollState, dispatch]: [ScrollRestorerState, (l: ScrollLocation) => void] = useReducer(
     scrollReducer,
-    {currentPathname: '', scrollLocations: []},
+    {currentPathname: '/', scrollLocations: [{pathname: '/', location: [0,0]}]},
   )
-  /*
-  const resolvePath = useResolvePath();
-  const pathname = resolvePath(".")
-  */
-  const pathname = window.location.pathname;
-  console.log({pathname})
-  useEffect(() => {
-    console.log({pathname, scrollState, disabled})
-    const lookupLocation = (): [x: number, y: number] => {
+
+  const lookupLocation = React.useCallback(
+    (pathname: string): [x: number, y: number] => {
       const foundLocation = scrollState.scrollLocations.find(
-        (searchLocation: ScrollLocation) => searchLocation.path === pathname
+        (searchLocation: ScrollLocation) => searchLocation.pathname === pathname
       )
       if(foundLocation){
         return foundLocation.location
       } else {
         return [0,0]
       }
-    }
-    dispatch(pathname);
-    if(!disabled) window.scrollTo(...lookupLocation());
-  }, [pathname, scrollState, disabled])
+    },
+    [scrollState]
+  )
+
+  const history = useGetHistory();
+  useLayoutEffect(() => {
+    return history.listen(
+      ({location}) => {
+        const pathname = location.pathname;
+        dispatch({pathname, location: [window.scrollX, window.scrollY]});
+        if(!disabled) setTimeout(() => window.scrollTo(...lookupLocation(pathname)), 2);
+      }
+    );
+  }, [history, disabled, lookupLocation])
   return <div/>
 }
 
