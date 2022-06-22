@@ -277,7 +277,7 @@ p.summary {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 .projects-list-item .tech-tag-list {

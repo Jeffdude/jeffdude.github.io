@@ -7,6 +7,7 @@ import ProjectPage from './pages/project';
 import FourOhFourPage from './pages/404';
 
 import StocktrackerV1Page from './pages/projects/stocktracker-v1';
+import BackendPage from './pages/projects/backend';
 
 export const topToolbarHeight: number = 200;
 
@@ -105,6 +106,17 @@ export const projects: Project[] = [
     shortDescription: "Full featured inventory management website.",
     techStack: [Tech.Javascript, Tech.React, Tech.Node, Tech.MongoDB],
     page: () => <></>,
+  },
+  {
+    title: "Auth Backend + FE Helpers",
+    projectId: "backend",
+    shortDescription: "Secure backend authentication REST API, and an accompanying npm package for frontend use.",
+    techStack: [Tech.Javascript, Tech.Node, Tech.MongoDB],
+    links: [
+      {tooltip: 'Backend', link: 'https://github.com/JMKRIDE-USA/Backend'},
+      {tooltip: 'Frontend', link: 'https://github.com/Jeffdude/FrontendHelpers'},
+    ],
+    page: () => <BackendPage/>,
   },
   {
     title: "Ambassador Portal",

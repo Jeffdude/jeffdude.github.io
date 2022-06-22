@@ -46,7 +46,7 @@ const ProjectScope: React.FC<ScopeProps> = ({scope}: ScopeProps): JSX.Element =>
 
 type PageProps = {
   projectId: string;
-  summary: string;
+  summary: string | React.ReactNode;
   scope?: Scope;
   children: React.ReactNode;
 }

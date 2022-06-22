@@ -48,6 +48,7 @@ code {
 
 button {
   all: unset;
+  cursor: pointer;
 }
 
 button:not(.tabbar-tab, .tech-tag), .button {
