@@ -1,5 +1,6 @@
 :root {
   --page-width: min(1300px, 95vw);
+  --inner-width: min(1000px, 95vw);
 }
 .App {
   text-align: center;
@@ -145,7 +146,7 @@
   max-width: var(--page-width);
 }
 .App-page > p {
-  max-width: min(1000px, 95vw);
+  max-width: var(--inner-width);
   margin: 0 15vmin;
 }
 div.bio {
@@ -435,4 +436,21 @@ p.form-error {
 }
 .back-to-home-link {
   margin-top: 4vmin;
+}
+.split-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+@media only screen and (min-width: 1200px) {
+  .split-row > * {
+    width: 47%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .split-row > * {
+    max-width: var(--inner-width);
+  }
 }
