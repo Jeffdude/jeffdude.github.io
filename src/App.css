@@ -147,7 +147,7 @@
 }
 .App-page > p {
   max-width: var(--inner-width);
-  margin: 0 15vmin;
+  margin: 1vmin 0 1vmin 0;
 }
 div.bio {
   display: flex;
@@ -443,6 +443,7 @@ p.form-error {
   flex-wrap: wrap-reverse;
   justify-content: flex-start;
   align-items: flex-end;
+  margin: 1vmin 0 1vmin 0;
 }
 @media only screen and (min-width: 1200px) {
   .split-row > * {
@@ -450,7 +451,15 @@ p.form-error {
   }
 }
 @media only screen and (max-width: 1200px) {
+  .split-row {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
   .split-row > * {
     max-width: var(--inner-width);
   }
+}
+img.fullpage {
+  margin: 2vmin 5vmin;
+  max-width: 80vw;
 }

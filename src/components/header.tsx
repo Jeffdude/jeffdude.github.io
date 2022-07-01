@@ -4,7 +4,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { GrMail } from 'react-icons/gr';
 import { IoDocumentText } from 'react-icons/io5'
 
-import AtomLogo from '../atom.svg';
+import AtomLogo from '../assets/atom.svg';
 
 function Header(){
   return (
