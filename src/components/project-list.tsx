@@ -4,7 +4,7 @@ import { IoFilter } from 'react-icons/io5';
 import { TiDelete } from 'react-icons/ti';
 import { FaGhost } from 'react-icons/fa';
 import { BiLink } from 'react-icons/bi';
-import { Link } from '@tanstack/react-location';
+import Link from './link';
 
 import SectionTitle from './section-title';
 import { Tech, Project, projects, AllTech } from '../constants';
@@ -56,7 +56,7 @@ const ProjectItem: React.FC<ItemProps> = ({project, selectedTech, dispatch}: Ite
   return <div className="projects-list-item">
     <div>
       <div className='title-row'>
-        <Link className='title' to={"project/" + projectId}>
+        <Link className='title' to={"/project/" + projectId}>
           <BiLink/>
           {title}
         </Link>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from '@tanstack/react-location';
+import Link from '../../components/link';
 
 import ProjectPage from '../../components/project-page';
 import SectionTitle from '../../components/section-title';
@@ -26,7 +26,7 @@ function StocktrackerV1Page(){
         operatingCosts: ['~$0 (self-hosted)'],
       }}
     >
-      <SectionTitle noBorder>Backend:</SectionTitle>
+      <SectionTitle noBorder>Backend</SectionTitle>
       <p>
         I chose Python for the backend because that was the language that I was
         most familiar with coming from my time at Facebook. Python's flask package
@@ -36,9 +36,9 @@ function StocktrackerV1Page(){
         use separate tables for the mapping of partId to inventory quantity and
         partId to rich part info like name, color, category, etc. I learned
         countless lessons from these issues that I incorporated into the much
-        improved <Link to="/project/stocktracker-v2">stocktracker v2</Link>
+        improved <Link to="/project/stocktracker-v2">stocktracker v2</Link>.
       </p>
-      <SectionTitle noBorder>Frontend:</SectionTitle>
+      <SectionTitle noBorder>Frontend</SectionTitle>
       <p>
         This was the first frontend website I created, so I learned a lot about
         separating frontend information display and backend business logic. I
@@ -48,8 +48,8 @@ function StocktrackerV1Page(){
         displaying, adding, and subtracting part inventory quantities. `chart.js`
         was used for the actual graphs, which were static and unresponsive. The
         site was not usable on mobile, which was fine because it was hosted
-        locally, so my coworkers were restricted to only interacting with it on
-        their desktop monitors.
+        locally, so my coworkers only connected and interacted with it via a
+        bookmark on their desktop monitors.
       </p>
       <SectionTitle noBorder>Deployment</SectionTitle>
       <p>
@@ -57,9 +57,9 @@ function StocktrackerV1Page(){
         always-on laptop server running Ubuntu server. At this time, no ports were
         open on our router, so I was able to avoid implementing any
         authentication. If we had guests or friends in our shop who were connected
-        to the wifi, they could've modified our inventory and we would have no way
-        of knowing who did it or what they did. Lots of lessons were learned from
-        this when 
+        to the wifi, theoretically, they could've modified our inventory and we
+        would have no way of knowing who did it or what they did. Lots of
+        lessons were learned from this when 
         implementing <Link to="/project/stocktracker-v2">stocktracker v2's</Link> backend.
       </p>
     </ProjectPage>

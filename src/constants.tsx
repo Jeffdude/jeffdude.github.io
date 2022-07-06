@@ -8,6 +8,7 @@ import FourOhFourPage from './pages/404';
 
 import StocktrackerV1Page from './pages/projects/stocktracker-v1';
 import BackendPage from './pages/projects/backend';
+import JMKRIDEShopWebsites from './pages/projects/shop-websites';
 
 export const topToolbarHeight: number = 200;
 
@@ -140,11 +141,11 @@ export const projects: Project[] = [
     page: () => <></>,
   },
   {
-    title: "JMKRIDE websites",
-    projectId: "jmkride-websites",
+    title: "JMKRIDE Shop Websites",
+    projectId: "jmkride-shop-websites",
     shortDescription: "The international and USA shop websites.",
     techStack: [Tech.Javascript, Tech.Wix, Tech.Liquid, Tech.Shopify],
-    page: () => <></>,
+    page: () => <JMKRIDEShopWebsites/>,
   },
   {
     title: "Ambassador Shopify App",

@@ -1,5 +1,7 @@
-import { Link } from '@tanstack/react-location';
 import React from 'react';
+
+import Link from './link';
+
 import Page from './page';
 import ProjectHeader from './project-header';
 import SectionTitle from './section-title';

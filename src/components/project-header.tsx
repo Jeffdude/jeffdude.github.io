@@ -15,10 +15,12 @@ const ProjectHeader: React.FC<Props> = ({projectId}: Props): JSX.Element => {
   return (
     <div className="project-header">
       <SectionTitle noMargin>{title}</SectionTitle>
-      <div id="row">
-        Code:
-        {links?.map(({ tooltip, link }, key) => <GithubLink {...{tooltip, link, key}}/>)}
-      </div>
+      {links &&
+        <div id="row">
+          Code:
+          {links.map(({ tooltip, link }, key) => <GithubLink {...{tooltip, link, key}}/>)}
+        </div>
+      }
       <div className="tech-tag-list">
         Tech Used: 
         {techStack.map((tech, key) => (

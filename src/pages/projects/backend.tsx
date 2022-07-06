@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from '@tanstack/react-location';
+import Link from '../../components/link';
 
 import CodeBlock from '../../components/code-block';
 import ProjectPage from '../../components/project-page';
@@ -111,10 +111,9 @@ function BackendPage() {
     <p>
       To begin this project, I had to teach myself everything about the flow 
       of trusted and authenticated client/server communications. Using{' '}
-      <a
-        href='https://www.toptal.com/nodejs/secure-rest-api-in-nodejs'
-        target="_blank" rel="noopener noreferrer"
-      >this helpful article</a>, I created a basic JWT-based authenticated REST
+      <Link to='https://www.toptal.com/nodejs/secure-rest-api-in-nodejs'>
+        this helpful article
+      </Link>, I created a basic JWT-based authenticated REST
       API. I didn't just copy without understanding, since there were several
       things I needed to modify to work for this project's purposes. I needed to
       implement multiple permission levels, as well as add user sessions that could be
@@ -218,7 +217,54 @@ function BackendPage() {
     </p>
     <CodeBlock>{QueryLoaderExample}</CodeBlock>
     <SectionTitle noBorder>Generic Project Architecture</SectionTitle>
-    <img src={ArchitectureDiagram} className='fullpage'/>
+    <img
+      src={ArchitectureDiagram}
+      className='fullpage-img'
+      alt='Architecture Diagram for Backend + Jeffdude Frontend Helpers'
+    />
+    <SectionTitle noBorder>Deployment</SectionTitle>
+    <p>
+      I have one running instance of the Backend per operation mode,
+      stocktracker and ambassadorsite. They are deployed in AWS using
+      the elasticbeanstalk framework. Since I opted to reduce the monthly
+      overhead as much as possible, I have disabled the load balancer (elastic)
+      part of elastic beanstalk. Because of this,{' '}
+      <a
+        href='https://github.com/JMKRIDE-USA/Backend/tree/master/.ebextensions'
+        target="_blank" rel="noopener noreferrer"
+      >
+        Eb extension configuration files
+      </a>{' '}
+      are required to set up a free certbot SSL certificate directly to the
+      instance.  Using certbot on AWS eb is a lesser-used work around, so some
+      significant trial-and-error debugging was necessary to accomplish it.
+      Eventually I managed to get it to work by initializing the instance with a
+      https nginx configuration file in /root/home/, starting nginx, generating
+      the certificate using the nginx server, copying the https config over, and
+      finally restarting nginx to use the https configuration.
+    </p>
+    <p>
+      Monitoring and alarming my AWS eb instances is an area for improvement. I
+      am currently relying on my coworkers daily usage for stocktracker's
+      health, and customer reports for the health of the freeskater finder.
+      Ideally, I would set up some form of email alert based on AWS instance
+      state.
+    </p>
+    <p>
+      My databases are hosted by{' '}
+      <a
+        href='https://www.mongodb.com/cloud/atlas'
+        target="_blank" rel="noopener noreferrer"
+      >
+        MongoDB's free Atlas service
+      </a>.{' '}
+      The free databases are provided for experiments/hobbyist projects, etc. Please
+      don't tell on me. ;) Atlas provides all in-house instance management, data
+      synchronization, load balancing, SSL certifications, and alarming. Atlas
+      also provides on-disk encryption for password fields, as well as
+      generating and updating search indexes. Thank you MongoDB for making my
+      life much easier!
+    </p>
   </ProjectPage>
 }
 
