@@ -10,12 +10,6 @@ type Props = {
 }
 
 const Footer: React.FC<Props> = ({noDivider}: Props): JSX.Element => {
-  /*
-  const [captcha, setCaptcha]: [boolean, (r: boolean) => void] = useState(false);
-  const [email, setEmail]: [string, (s: string) => void] = useState('');
-  const [message, setMessage]: [string, (s: string) => void] = useState('');
-  */
-
   const reCaptchaRef = useRef<ReCAPTCHA>() as MutableRefObject<ReCAPTCHA>;
 
   type FormValues = {

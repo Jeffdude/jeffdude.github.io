@@ -57,7 +57,7 @@ const ProjectItem: React.FC<ItemProps> = ({project, selectedTech, dispatch}: Ite
     <div>
       <div className='title-row'>
         <Link className='title' to={"/project/" + projectId}>
-          <BiLink/>
+          {project.underConstruction ? "⚠️" : <BiLink/>}
           {title}
         </Link>
         {links?.map((link, key)=>
@@ -94,6 +94,8 @@ const ProjectList: React.FC<{}> = (): JSX.Element => {
           return foundTech.every(index => index > -1)
         })
       : projects;
+  
+  selectedProjects.sort((a, b) => (a.underConstruction ? 1 : 0) - (b.underConstruction ? 1 : 0))
 
   return <div className="projects-list-container">
     <SectionTitle id="projects">My Projects</SectionTitle>

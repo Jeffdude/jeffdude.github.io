@@ -9,6 +9,7 @@ import FourOhFourPage from './pages/404';
 import StocktrackerV1Page from './pages/projects/stocktracker-v1';
 import BackendPage from './pages/projects/backend';
 import JMKRIDEShopWebsites from './pages/projects/shop-websites';
+import UnderConstructionPage from './pages/projects/construction';
 
 export const topToolbarHeight: number = 200;
 
@@ -86,6 +87,7 @@ export interface Project {
   shortDescription: string,
   techStack: Tech[],
   links?: {link: string, tooltip: string}[],
+  underConstruction: boolean,
   page: () => React.ReactNode;
 } 
 
@@ -100,13 +102,15 @@ export const projects: Project[] = [
       {tooltip: 'Backend', link: "https://github.com/JMKRIDE-USA/StockTracker-backend"},
     ],
     page: () => <StocktrackerV1Page/>,
+    underConstruction: false,
   },
   {
     title: "Stock Tracker v2",
     projectId: "stocktracker-v2",
     shortDescription: "Full featured inventory management website.",
     techStack: [Tech.Javascript, Tech.React, Tech.Node, Tech.MongoDB],
-    page: () => <></>,
+    page: () => <UnderConstructionPage/>,
+    underConstruction: true,
   },
   {
     title: "Auth Backend + FE Helpers",
@@ -118,47 +122,57 @@ export const projects: Project[] = [
       {tooltip: 'Frontend', link: 'https://github.com/Jeffdude/FrontendHelpers'},
     ],
     page: () => <BackendPage/>,
+    underConstruction: false,
   },
   {
     title: "Ambassador Portal",
     projectId: "ambassador-portal",
     shortDescription: "First attempt at an authenticated frontend & backend.",
     techStack: [Tech.Javascript, Tech["React Native"], Tech.Node, Tech.MongoDB],
-    page: () => <></>,
+    page: () => <UnderConstructionPage/>,
+    underConstruction: true,
   },
   {
     title: "Service Storm",
     projectId: "service-storm",
     shortDescription: "Disaster simulation software at Facebook scale.",
     techStack: [Tech.Python],
-    page: () => <></>,
+    page: () => <UnderConstructionPage/>,
+    underConstruction: true,
   },
   {
     title: "This Website",
     projectId: "personal-website",
     shortDescription: "This simple professional personal website",
     techStack: [Tech.Javascript, Tech.Typescript, Tech.React],
-    page: () => <></>,
+    page: () => <UnderConstructionPage/>,
+    underConstruction: true,
   },
   {
     title: "JMKRIDE Shop Websites",
     projectId: "jmkride-shop-websites",
     shortDescription: "The international and USA shop websites.",
     techStack: [Tech.Javascript, Tech.Wix, Tech.Liquid, Tech.Shopify],
+    links: [
+      {tooltip: 'USA Shop', link: 'https://github.com/JMKRIDE-USA/USAShop'},
+    ],
     page: () => <JMKRIDEShopWebsites/>,
+    underConstruction: false,
   },
   {
     title: "Ambassador Shopify App",
     projectId: "ambassador-shopify-app",
     shortDescription: "The interface between USA sales and our ambassador balances",
     techStack: [Tech.Javascript, Tech.Shopify, Tech.GraphQL],
-    page: () => <></>,
+    page: () => <UnderConstructionPage/>,
+    underConstruction: true,
   },
   {
     title: "Freeskater Finder",
     projectId: "freeskater-finder",
     shortDescription: "Customer-facing social map website for connecting people all around the world",
     techStack: [Tech.React, Tech.Javascript, Tech.MongoDB, Tech.Node],
-    page: () => <></>,
+    page: () => <UnderConstructionPage/>,
+    underConstruction: true,
   },
 ]

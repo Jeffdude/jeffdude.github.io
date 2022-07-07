@@ -2,7 +2,6 @@ import React from 'react';
 
 import Page from '../components/page';
 import ProjectList from '../components/project-list';
-import SectionTitle from '../components/section-title';
 
 function HomePage(){
   return <Page>
