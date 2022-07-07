@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { MutableRefObject, useRef } from 'react';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 
+import emailjs from "emailjs-com";
 import ReCAPTCHA from "react-google-recaptcha";
 
 type Props = {
@@ -15,16 +16,33 @@ const Footer: React.FC<Props> = ({noDivider}: Props): JSX.Element => {
   const [message, setMessage]: [string, (s: string) => void] = useState('');
   */
 
+  const reCaptchaRef = useRef<ReCAPTCHA>() as MutableRefObject<ReCAPTCHA>;
+
   type FormValues = {
-    captcha: boolean;
+    captcha: string;
     email: string;
     message: string;
   }
 
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm<FormValues>();
+  const { register, handleSubmit, setValue, formState: { errors }, reset: resetForm } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = ({email, message, captcha}: FormValues): void => {
-    console.log({email, message, captcha})
+    const serviceId = 'service_41rxfni', templateId = 'template_lkudgz6', publicKey = 'FM9c9meJTDfqqGXQ3';
+    emailjs.send(
+      serviceId, templateId,
+      {reply_email: email, message, "g-recaptcha-response": captcha},
+      publicKey,
+    ).then((response) => {
+      if(response.status === 200) {
+        alert("Success! I'll get back to you ASAP.")
+        resetForm();
+        if(reCaptchaRef.current) reCaptchaRef.current.reset();
+      } else {
+        alert("Failed! " + response.text)
+      }
+    }, ( error ) => {
+      alert("Failed! " + error.text)
+    })
   }
 
   return <div className="footer-container">
@@ -35,7 +53,6 @@ const Footer: React.FC<Props> = ({noDivider}: Props): JSX.Element => {
     <div className="footer-content">
       <div>
         <h4>Contact Me:</h4>
-        <p>Blurb</p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="footer-form">
         <input 
@@ -55,7 +72,8 @@ const Footer: React.FC<Props> = ({noDivider}: Props): JSX.Element => {
         {errors.message && <p className="form-error">{errors?.message?.message}</p>}
         <ReCAPTCHA
           sitekey="6LctD2ogAAAAAMoXtzQK7uV2_2Yee0xOBDN-6wbp"
-          onChange={(value: any): void => setValue('captcha', !!value)}
+          ref={reCaptchaRef}
+          onChange={(value: any): void => setValue('captcha', value)}
           theme="dark"
         />
         <button type="submit">Submit</button>
