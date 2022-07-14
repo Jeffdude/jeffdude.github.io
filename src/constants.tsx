@@ -9,6 +9,7 @@ import FourOhFourPage from './pages/404';
 import StocktrackerV1Page from './pages/projects/stocktracker-v1';
 import BackendPage from './pages/projects/backend';
 import JMKRIDEShopWebsites from './pages/projects/shop-websites';
+import StocktrackerV2Page from './pages/projects/stocktrackerv2';
 import UnderConstructionPage from './pages/projects/construction';
 
 export const topToolbarHeight: number = 200;
@@ -109,8 +110,8 @@ export const projects: Project[] = [
     projectId: "stocktracker-v2",
     shortDescription: "Full featured inventory management website.",
     techStack: [Tech.Javascript, Tech.React, Tech.Node, Tech.MongoDB],
-    page: () => <UnderConstructionPage/>,
-    underConstruction: true,
+    page: () => <StocktrackerV2Page/>,
+    underConstruction: false,
   },
   {
     title: "Auth Backend + FE Helpers",
