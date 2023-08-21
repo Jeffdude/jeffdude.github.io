@@ -27,7 +27,7 @@ function App() {
       <ScrollRestorer/>
       <div className='App'>
         <Header/>
-        <TabBar/>
+        {/* <TabBar/> */}
         <Outlet/>
       </div>
     </Router>

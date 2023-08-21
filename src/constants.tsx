@@ -11,6 +11,7 @@ import BackendPage from './pages/projects/backend';
 import JMKRIDEShopWebsites from './pages/projects/shop-websites';
 import StocktrackerV2Page from './pages/projects/stocktrackerv2';
 import UnderConstructionPage from './pages/projects/construction';
+import FreeskaterFinderPage from './pages/projects/freeskater-finder';
 
 export const topToolbarHeight: number = 200;
 
@@ -94,6 +95,42 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Freeskater Finder",
+    projectId: "freeskater-finder",
+    shortDescription: "Customer-facing social map website for connecting people all around the world",
+    techStack: [Tech.React, Tech.Javascript, Tech.MongoDB, Tech.Node],
+    page: () => <FreeskaterFinderPage/>,
+    links: [
+      {tooltip: 'Frontend', link: "https://github.com/JMKRIDE-USA/FreeskaterFinder"},
+      {tooltip: 'Backend', link: "https://github.com/JMKRIDE-USA/Backend"},
+    ],
+    underConstruction: false,
+  },
+  {
+    title: "Stock Tracker v2",
+    projectId: "stocktracker-v2",
+    shortDescription: "Full featured inventory management website.",
+    techStack: [Tech.Javascript, Tech.React, Tech.Node, Tech.MongoDB],
+    links: [
+      {tooltip: 'Frontend', link: "https://github.com/JMKRIDE-USA/StockTracker-frontend"},
+      {tooltip: 'Backend', link: "https://github.com/JMKRIDE-USA/Backend"},
+    ],
+    page: () => <StocktrackerV2Page/>,
+    underConstruction: false,
+  },
+  {
+    title: "Auth Backend & Frontend Helpers",
+    projectId: "backend",
+    shortDescription: "Secure backend authentication REST API, and an accompanying npm package for frontend use.",
+    techStack: [Tech.Javascript, Tech.Node, Tech.MongoDB],
+    links: [
+      {tooltip: 'Backend', link: 'https://github.com/JMKRIDE-USA/Backend'},
+      {tooltip: 'Frontend', link: 'https://github.com/Jeffdude/FrontendHelpers'},
+    ],
+    page: () => <BackendPage/>,
+    underConstruction: false,
+  },
+  {
     title: "Stock Tracker v1",
     projectId: "stocktracker-v1",
     shortDescription: "My first website.",
@@ -103,26 +140,6 @@ export const projects: Project[] = [
       {tooltip: 'Backend', link: "https://github.com/JMKRIDE-USA/StockTracker-backend"},
     ],
     page: () => <StocktrackerV1Page/>,
-    underConstruction: false,
-  },
-  {
-    title: "Stock Tracker v2",
-    projectId: "stocktracker-v2",
-    shortDescription: "Full featured inventory management website.",
-    techStack: [Tech.Javascript, Tech.React, Tech.Node, Tech.MongoDB],
-    page: () => <StocktrackerV2Page/>,
-    underConstruction: false,
-  },
-  {
-    title: "Auth Backend + FE Helpers",
-    projectId: "backend",
-    shortDescription: "Secure backend authentication REST API, and an accompanying npm package for frontend use.",
-    techStack: [Tech.Javascript, Tech.Node, Tech.MongoDB],
-    links: [
-      {tooltip: 'Backend', link: 'https://github.com/JMKRIDE-USA/Backend'},
-      {tooltip: 'Frontend', link: 'https://github.com/Jeffdude/FrontendHelpers'},
-    ],
-    page: () => <BackendPage/>,
     underConstruction: false,
   },
   {
@@ -137,7 +154,7 @@ export const projects: Project[] = [
     title: "Service Storm",
     projectId: "service-storm",
     shortDescription: "Disaster simulation software at Facebook scale.",
-    techStack: [Tech.Python],
+    techStack: [Tech.Python, Tech.MySQL],
     page: () => <UnderConstructionPage/>,
     underConstruction: true,
   },
@@ -165,14 +182,6 @@ export const projects: Project[] = [
     projectId: "ambassador-shopify-app",
     shortDescription: "The interface between USA sales and our ambassador balances",
     techStack: [Tech.Javascript, Tech.Shopify, Tech.GraphQL],
-    page: () => <UnderConstructionPage/>,
-    underConstruction: true,
-  },
-  {
-    title: "Freeskater Finder",
-    projectId: "freeskater-finder",
-    shortDescription: "Customer-facing social map website for connecting people all around the world",
-    techStack: [Tech.React, Tech.Javascript, Tech.MongoDB, Tech.Node],
     page: () => <UnderConstructionPage/>,
     underConstruction: true,
   },

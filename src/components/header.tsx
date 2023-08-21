@@ -11,7 +11,7 @@ function Header(){
     <div className="App-header">
       <div className='App-inner-header'>
         <div className="Header-title">
-          <object data={AtomLogo} aria-label="logo"/>
+          <object data={AtomLogo} aria-label="logo" className="Header-logo"/>
           <div>
             <h2 id="row">
               <div style={{fontStyle: "normal", paddingRight: "0.1em"}}>

@@ -53,7 +53,7 @@ type ItemProps = {
 
 const ProjectItem: React.FC<ItemProps> = ({project, selectedTech, dispatch}: ItemProps): JSX.Element => {
   const { title, shortDescription, techStack, links, projectId}: Project = project;
-  return <div className="projects-list-item">
+  return <div className="projects-list-item raised-box">
     <div>
       <div className='title-row'>
         <Link className='title' to={"/project/" + projectId}>
@@ -97,7 +97,7 @@ const ProjectList: React.FC<{}> = (): JSX.Element => {
   
   selectedProjects.sort((a, b) => (a.underConstruction ? 1 : 0) - (b.underConstruction ? 1 : 0))
 
-  return <div className="projects-list-container">
+  return <div className="section-container">
     <SectionTitle id="projects">My Projects</SectionTitle>
     <div className="projects-list-filters">
       <IoFilter size={30}/>

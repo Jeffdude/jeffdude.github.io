@@ -2,6 +2,7 @@ import React from 'react';
 
 import Page from '../components/page';
 import ProjectList from '../components/project-list';
+import FAQ from '../components/faq';
 
 function HomePage(){
   return <Page>
@@ -13,7 +14,16 @@ function HomePage(){
         </p>
       </div>
       <p className="summary">
-        I am a highly driven goal-oriented software engineer with a variety of
+        I am a highly driven goal-oriented software engineer with a variety of technical
+        experience aquired through self-teaching, industry experience, and formal education.
+        After over five years experience in dynamic large-scale system architecture and
+        administration from my time at Facebook and ViaSat, I began pursuing my
+        passion for entrepreneurship and full stack software development. After four
+        years of technical and leadership work at JMKRIDE and GoSchoolBox, I am in a
+        position where I have offloaded my responsibilities at JMKRIDE and am looking to
+        continue my career with an exciting remote/hybrid role in full stack software
+        development.
+        {/* I am a highly driven goal-oriented software engineer with a variety of
         technical experience aquired through self-teaching, industry experience,
         and formal education.  After over five years experience in dynamic
         large-scale system architecture and administration from my time at
@@ -25,10 +35,11 @@ function HomePage(){
         have been operating successfully for several months at a minimum and are in
         low-commitment maintanance mode. Now, I am looking to continue my
         learning journey and implement exciting and useful projects for other
-        businesses I am passionate about.
+        businesses I am passionate about. */}
       </p>
     </div>
     <ProjectList/>
+    {/* <FAQ/> */}
   </Page>
 }
 export default HomePage;
