@@ -37,6 +37,11 @@ h3, h4 {
   margin: 0;
 }
 
+hr {
+  min-width: min(400px, 80vw);
+  margin: 2vmin 0;
+}
+
 textarea, input {
   all: unset;
 }

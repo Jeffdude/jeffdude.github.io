@@ -98,7 +98,7 @@ const ProjectList: React.FC<{}> = (): JSX.Element => {
   selectedProjects.sort((a, b) => (a.underConstruction ? 1 : 0) - (b.underConstruction ? 1 : 0))
 
   return <div className="section-container">
-    <SectionTitle id="projects">My Projects</SectionTitle>
+    <SectionTitle id="projects">Past Projects</SectionTitle>
     <div className="projects-list-filters">
       <IoFilter size={30}/>
       <p>Filter:</p>

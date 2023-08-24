@@ -60,7 +60,7 @@ const ProjectPage: React.FC<PageProps> = ({
     <Page>
       <ProjectHeader projectId={projectId}/>
       <SectionTitle noBorder>Summary:</SectionTitle>
-      <p>{summary}</p>
+      {summary}
       {scope && <ProjectScope scope={ scope }/>}
       {children}
       <Link to="/" hash="projects" className="button back-to-home-link">Back to all projects</Link>

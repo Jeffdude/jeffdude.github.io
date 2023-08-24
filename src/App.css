@@ -37,7 +37,7 @@
   flex-grow: 2;
   pointer-events: none;
 }
-.Header-logo > * {
+.Header-logo {
   height: 24vmin;
   padding: 3vmin 3vmin 0;
 }
@@ -145,7 +145,7 @@
 .App-page > * {
   max-width: var(--page-width);
 }
-.App-page > p {
+.App-page > p, .App-page > ul {
   max-width: var(--inner-width);
   margin: 1vmin 0 1vmin 0;
 }
@@ -507,4 +507,9 @@ p.form-error {
 .qa-answer {
   padding: 2vmin;
   padding-top: 0;
+}
+
+.FF-logo {
+  max-width: min(600px, 80vw);
+  margin: 3vmin 0;
 }
