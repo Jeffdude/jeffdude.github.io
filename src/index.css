@@ -8,6 +8,7 @@ body {
 
 p {
   margin: 0;
+  font-size: calc(5px + 2vmin);
 }
 
 a:-webkit-any-link {
@@ -16,7 +17,6 @@ a:-webkit-any-link {
 
 h1, h2 {
   font-family: 'Rubik', sans-serif;
-  font-size: calc(25px + 2vmin);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-style: normal;

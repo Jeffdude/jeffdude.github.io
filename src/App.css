@@ -163,15 +163,10 @@ div.selfie {
   align-items: center;
   justify-content: center;
   max-width: 400px;
-  margin: 4vmin 4vmin 0 0;
-}
-@media only screen and (max-width: 1500px) {
-  div.selfie {
-    display: none;
-  }
+  margin: 4vmin 3vmin 0 0;
 }
 img.selfie {
-  max-width: min(70vw, 400px);
+  max-width: min(70vw, 380px);
   border: 5px solid white;
   transform: rotate(-15deg);
   margin: 15px 15px 50px;
@@ -180,9 +175,17 @@ p.caption {
   font-size: calc(5px + 0.8vmin);
 }
 p.summary {
-  margin: 0.5em 0 0 1.5em;
+  margin: 1em 1.5em 0 1em;
   min-width: 25vw;
-  max-width: 900px;
+  max-width: 700px;
+}
+@media only screen and (max-width: 1300px) {
+  div.selfie {
+    display: none;
+  }
+  p.summary {
+    max-width: 900px;
+  }
 }
 
 .section-title-container {

@@ -57,7 +57,7 @@ const ProjectItem: React.FC<ItemProps> = ({project, selectedTech, dispatch}: Ite
     <div>
       <div className='title-row'>
         <Link className='title' to={"/project/" + projectId}>
-          {project.underConstruction ? "⚠️" : <BiLink/>}
+          {project.underConstruction ? "⚠️ " : <BiLink/>}
           {title}
         </Link>
         {links?.map((link, key)=>
